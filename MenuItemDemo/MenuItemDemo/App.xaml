@@ -6,6 +6,11 @@
              mc:Ignorable="d"
              x:Class="MenuItemDemo.App">
     <Application.Resources>
-
+        <Color x:Key="BarColor">#A29191</Color>
+        <Color x:Key="TextColor">#FFFFFF</Color>
+        <Style TargetType="NavigationPage">
+            <Setter Property="BarBackgroundColor" Value="{StaticResource BarColor}" />
+            <Setter Property="BarTextColor" Value="{StaticResource TextColor}" />
+        </Style>
     </Application.Resources>
 </Application>

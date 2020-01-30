@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.Runtime.CompilerServices;
 
 using MenuItemDemo.Views;
+using MenuItemDemo.Models;
 
 using Xamarin.Forms;
 
@@ -16,9 +17,9 @@ namespace MenuItemDemo.ViewModels
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        ObservableCollection<string> items;
+        ObservableCollection<Project> items;
 
-        public ObservableCollection<string> Items
+        public ObservableCollection<Project> Items
         {
             get
             {
@@ -48,8 +49,9 @@ namespace MenuItemDemo.ViewModels
             }
         }
 
-        string selectedItem;
-        public string SelectedItem
+        Project selectedItem;
+
+        public Project SelectedItem
         {
             get
             {
@@ -65,30 +67,30 @@ namespace MenuItemDemo.ViewModels
             }
         }
 
-        private string previousItem;
+        private Project previousItem;
 
         public ListPageViewModel()
         {
-            Items = new ObservableCollection<string>();
+            Items = new ObservableCollection<Project>();
         }
 
-        public ListPageViewModel(List<string> startingItems)
+        public ListPageViewModel(List<Project> startingItems)
         {
-            Items = new ObservableCollection<string>(startingItems);
+            Items = new ObservableCollection<Project>(startingItems);
         }
 
-        public ICommand EditCommand => new Command<string>(async (string item) =>
+        public ICommand EditCommand => new Command<Project>(async (Project item) =>
         {
-            Message = $"Edit command was called on: {item}";
+            Message = $"Edit command was called on: {item.ProjectId} - {item.ProjectName}";
             previousItem = item;
 
             SelectedItem = item;
             await PopupNavigation.Instance.PushAsync(new EditFormPopUp(this));
         });
 
-        public ICommand DeleteCommand => new Command<string>((string item) =>
+        public ICommand DeleteCommand => new Command<Project>((Project item) =>
         {
-            Message = $"Delete command was called on: {item}";
+            Message = $"Delete command was called on: {item.ProjectId} - {item.ProjectName}";
             items.Remove(item);
         });
 

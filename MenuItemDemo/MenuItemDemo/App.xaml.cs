@@ -8,7 +8,7 @@ namespace MenuItemDemo
         {
             InitializeComponent();
 
-            MainPage = new Views.MenuItemXamlMvvmPage();
+            MainPage = new NavigationPage(new Views.MenuItemXamlMvvmPage());
         }
     }
 }

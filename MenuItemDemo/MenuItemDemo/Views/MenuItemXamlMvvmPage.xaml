@@ -34,7 +34,7 @@
                                       Command="{Binding Source={x:Reference this}, Path=BindingContext.DeleteCommand}"
                                       CommandParameter="{Binding .}"/>
                         </ViewCell.ContextActions>
-                        <Label Text="{Binding .}" />
+                        <Label Text="{Binding ProjectName}" />
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>

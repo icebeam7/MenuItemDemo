@@ -1,16 +1,25 @@
-﻿using System.Collections.Generic;
+﻿using MenuItemDemo.Models;
+using System.Collections.Generic;
 
 namespace MenuItemDemo.Services
 {
     public static class DataService
     {
-        public static List<string> GetListItems(int itemCount = 10)
+        public static List<Project> GetListItems(int itemCount = 10)
         {
-            List<string> items = new List<string>();
+            var items = new List<Project>();
+
             for (var i = 1; i <= itemCount; i++)
             {
-                items.Add($"Item {i}");
+                var project = new Project()
+                {
+                    ProjectId = i,
+                    ProjectName = $"Project {i}"
+                };
+
+                items.Add(project);
             }
+
             return items;
         }
     }
